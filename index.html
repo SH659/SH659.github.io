@@ -31,7 +31,7 @@ input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px;
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
 p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
 p { orphans: 4; }
 h1 { font-size: 2rem; }
 h2 { font-size: 1.8rem; }
@@ -82,7 +82,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
   #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   html.blink-to-pdf { font-size: 13px; }
@@ -93,6 +93,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 a img, img a { cursor: pointer; }
 pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
 p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
 p > .md-image:only-child { display: inline-block; width: 100%; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
 .md-math-block { width: 100%; }
@@ -176,6 +177,19 @@ body {
   	padding: 30px;
     padding-bottom: 100px;
 }
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
 #write > ul:first-child,
 #write > ol:first-child{
     margin-top: 30px;
@@ -523,6 +537,9 @@ header, .context-menu, .megamenu-content, footer{
   <source src="audio/it_dont_mean_a_thing.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio><p><span>-</span><span> Ммм, Крышечка, а это что за блюдо? - с удивлением спросил Фонарь.</span></p><p><span>-</span><span> Тушенные иголки в собственном соку. Ты что никогда иголок не ел?</span></p><p><span>-</span><span> Та нет, как-то не приходилось.</span></p><p><span>-</span><span> Хей, ты чего такой кислый? Попробуй, они правда вкусные. Это лучшее что здесь есть, я сама выбирала!</span></p><p><span>Сказала тоненьким голосом Крышечка, уставившись маленькими зелеными глазами на своего собеседника. Темные тонкие брови приподнялись чуть-чуть вверх от удивления.</span></p><p><span>-</span><span> Хм, вкусно...</span></p><p><span>-</span><span> Ну я же говорила!</span></p><p><span>-</span><span> Микроволн не хватает, люблю вкус понасыщеннее. М, я хотел сказать спасибо..</span></p><p><span>-</span><span> Такой смешной. Если вдруг нужна будет помощь.. </span><span>*</span><span>игра бровями</span><span>*</span><span> .. я всегда рада помочь - чуть улыбаясь сказала Крышечка. </span>
-<span>И давно ты тут?</span></p><p><span>-</span><span> Недели полторы. Я просто прогуливался утром и вдруг меня схватили струны и понесли сюда. Эх, я тогда так испугался. Хоть бы спросили!</span></p><p><span>-</span><span> Не понимаю тебя, по-моему это нормально, не? Хотя.. Такая себе тема для разговора. Можем остаться тут... А можем... пройтись - подморгнула крышечка.</span></p><p><img src="images/5.png" referrerpolicy="no-referrer" alt="image-5"></p><div style="text-align:center">(рис 5. ужин)</div></div>
+<span>И давно ты тут?</span></p><p><span>-</span><span> Недели полторы. Я просто прогуливался утром и вдруг меня схватили струны и понесли сюда. Эх, я тогда так испугался. Хоть бы спросили!</span></p><p><span>-</span><span> Не понимаю тебя, по-моему это нормально, не? Хотя.. Такая себе тема для разговора. Можем остаться тут... А можем... пройтись - подморгнула крышечка.</span></p><p><img src="images/5.png" referrerpolicy="no-referrer" alt="image-5"></p><div style="text-align:center">(рис 5. ужин)</div><h3><a name="6" class="md-header-anchor"></a><span>6</span></h3><audio controls="" preload="none">
+  <source src="audio/dumb.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio><p><span>Дождался. Время 28 часов вечера - вся нормальная техника уже идет на боковую, а я, снова прочитав свой серийный номер, собираюсь на улицу. И чего она меня только позвала? Хотя, гулять это мое призвание.. Интересно что она обо мне вообще думает? Ха-ха, Крышечка от флэшки и Фонарь, xD. Высокий, зато светло?</span></p><p><span>Пора выходить. Небо классное. Кажется, оно в этом крае специально светит ярче? Дежавю... Хотя странно, это же сколько электроэнергии нужно что бы включить каждую лампочку на небе?! Это неэффективно, это несерьезно! И вообще интересное место, да и Крышечка тоже, ей норм, а мне тут не нравится. В старом городе было лучше...</span></p><p><span>Фонарь внимательно посмотрел на свое лицо в зеркало, так будто это его привычка, будто он не мог этого не сделать, улыбнулся, и вышел на запланированную встречу.</span></p><p><img src="images/6.png" referrerpolicy="no-referrer" alt="image-6"></p><div style="text-align:center">(рис 6. зеркало)</div></div>
 </body>
 </html>
