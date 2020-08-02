@@ -24,7 +24,7 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
 button, input, select, textarea { color: inherit; font: inherit; }
 input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
 *, ::after, ::before { box-sizing: border-box; }
@@ -47,7 +47,7 @@ sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); 
 sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px !important; }
+figure > table { margin: 0px; }
 tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
@@ -88,6 +88,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
   html.blink-to-pdf { font-size: 13px; }
   .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
   .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
@@ -161,12 +162,16 @@ mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 
 @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
-html {
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
     font-size: 16px;
 }
 
 body {
-    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: rgb(51, 51, 51);
     line-height: 1.6;
 }
@@ -518,7 +523,7 @@ header, .context-menu, .megamenu-content, footer{
 </style>
 </head>
 <body class='typora-export os-windows' >
-<div  id='write'  class = 'is-node'><div style="text-align:center">Пока не придумал</div><hr /><h3><a name="1" class="md-header-anchor"></a><span>1</span></h3><audio controls="" preload="none">
+<div  id='write'  class = ''><div style="text-align:center">Пока не придумал</div><hr /><h3><a name="1" class="md-header-anchor"></a><span>1</span></h3><audio controls="" preload="none">
   <source src="audio/mad_world.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio><p>&nbsp;</p><p><span>Заброшенный город. Ночь. Тяжелое дыхание ветра сдувает  остатки следов с улиц, еще недавно населённых вязкой смесью под названием общество. То общество было прежним, не видавшим новый строй, его преимущества, оно было старым, оно было другим... Побитый временем бордюр плакал осколками камня, падающими в начало темноты. Эти улицы и вправду были темны - всего пара фонарей на каждую, будто кто-то экономил на этом, или специально не давал их ставить. Тень начиналась чуть ли не прямо под фонарем, а тянулась бесконечно долго, бесконечно далеко. Лишь старые окна задумчиво смотрели вдаль, ожидая перемен.</span></p><p><img src="images/1.png" referrerpolicy="no-referrer" alt="image-1"></p><div style="text-align:center">(рис 1. Бордюр плачет)</div><hr /><h3><a name="2" class="md-header-anchor"></a><span>2</span></h3><audio controls="" preload="none">
@@ -540,6 +545,9 @@ header, .context-menu, .megamenu-content, footer{
 <span>И давно ты тут?</span></p><p><span>-</span><span> Недели полторы. Я просто прогуливался утром и вдруг меня схватили струны и понесли сюда. Эх, я тогда так испугался. Хоть бы спросили!</span></p><p><span>-</span><span> Не понимаю тебя, по-моему это нормально, не? Хотя.. Такая себе тема для разговора. Можем остаться тут... А можем... пройтись - подморгнула крышечка.</span></p><p><img src="images/5.png" referrerpolicy="no-referrer" alt="image-5"></p><div style="text-align:center">(рис 5. ужин)</div><h3><a name="6" class="md-header-anchor"></a><span>6</span></h3><audio controls="" preload="none">
   <source src="audio/dumb.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
-</audio><p><span>Дождался. Время 28 часов вечера - вся нормальная техника уже идет на боковую, а я, снова прочитав свой серийный номер, собираюсь на улицу. И чего она меня только позвала? Хотя, гулять это мое призвание.. Интересно что она обо мне вообще думает? Ха-ха, Крышечка от флэшки и Фонарь, xD. Высокий, зато светло?</span></p><p><span>Пора выходить. Небо классное. Кажется, оно в этом крае специально светит ярче? Дежавю... Хотя странно, это же сколько электроэнергии нужно что бы включить каждую лампочку на небе?! Это неэффективно, это несерьезно! И вообще интересное место, да и Крышечка тоже, ей норм, а мне тут не нравится. В старом городе было лучше...</span></p><p><span>Фонарь внимательно посмотрел на свое лицо в зеркало, так будто это его привычка, будто он не мог этого не сделать, улыбнулся, и вышел на запланированную встречу.</span></p><p><img src="images/6.png" referrerpolicy="no-referrer" alt="image-6"></p><div style="text-align:center">(рис 6. зеркало)</div></div>
+</audio><p><span>Дождался. Время 28 часов вечера - вся нормальная техника уже идет на боковую, а я, снова прочитав свой серийный номер, собираюсь на улицу. И чего она меня только позвала? Хотя, гулять это мое призвание.. Интересно что она обо мне вообще думает? Ха-ха, Крышечка от флэшки и Фонарь, xD. Высокий, зато светло?</span></p><p><span>Пора выходить. Небо классное. Кажется, оно в этом крае специально светит ярче? Дежавю... Хотя странно, это же сколько электроэнергии нужно что бы включить каждую лампочку на небе?! Это неэффективно, это несерьезно! И вообще интересное место, да и Крышечка тоже, ей норм, а мне тут не нравится. В старом городе было лучше...</span></p><p><span>Фонарь внимательно посмотрел на свое лицо в зеркало, так будто это его привычка, будто он не мог этого не сделать, улыбнулся, и вышел на запланированную встречу.</span></p><p><img src="images/6.png" referrerpolicy="no-referrer" alt="image-6"></p><div style="text-align:center">(рис 6. зеркало)</div><h3><a name="7" class="md-header-anchor"></a><span>7</span></h3><audio controls="" preload="none">
+  <source src="audio/caravan_palace_lone_digger.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio><p><span>Два часа ночи. Деревья, лавочки, и снова лавочки, и снова деревья... У кого-то рядом играет музыка.</span></p><p><span>-</span><span> Выпьем? Спросила крышечка и стеснительно подморгнула.</span></p><p><span>-</span><span> С тебя тост - сказал Фонарь, ищя взглядом остатки &quot;девятого вольта&quot;.</span></p><p><span>-</span><span> Кхм, ну это... эээм... За инкапсуляцию!</span></p><p><span>-</span><span> За инкапсуляцию!</span></p><p><span>И вот, в один миг, крепнет ум, яснеет мысль, твердеют намерения. Бесконечно можно смотреть на три вещи: на крышечку, снова на крышечку, и опять на крышечку. Как вдруг она кричит, пронзая задумчивое состояние.</span></p><p><span>-</span><span> Эй, братан, о чем думаешь? Смотри как могу!</span></p><p><span>Что? А мне нужно отвечать? - спросил себя Фонарь. И пока он думал что ответить, крышечка вдруг затанцевала. Это было нечто необычное, она двигалась, как заколдованная, словно земное притяжение на нее не действует. Ее красивые ножки будто скользили по земле, совсем не зависимо от тела. </span></p><p><span>-</span><span> Классно танцуешь!</span></p><p><span>-</span><span> Спасибо - с улыбкой на лице сказала Крышечка.</span></p><p><span>Крышечка продолжала кружится в свете, покачивающего головой, Фонаря.</span></p><p><span>-</span><span> А ты чего не танцуешь?</span></p><p><span>-</span><span> Не мое это. Не умею.</span></p><p><span>-</span><span> Давай научу? - с большим энтузиазмом спросила Крышечка.</span></p><p><span>-</span><span> Давай как-то в другой раз. А вообще, за предложение спасибо - учтиво ответил Фонарь, сдерживая свой маленький страх всего нового, и сел на лавочку. </span></p><p><span>Крышечка запрыгнула на лавочку. Взяла в руки свою банку девяти вольт и уставилась на небо, встав во весь рост, там, где обычно сидят. Небо - море маленьких огней, всегда радовало душу Крышечки как впервые. Фонарь сидел неподвижно уставившись на свои ноги. Заметив поворот Крышечки в его сторону, в голове пронеслось &quot;Ты что-то говорила?&quot;, и Фонарь чуть наклонился в её сторону. Как вдруг, &quot;Что? Поцелуй?? Ты хотела что-то спросить или так надо? Она правда меня поцеловала?&quot;, - поток мыслей было не остановить, чувства лили через край, а деление на ноль в этот момент официально стало возможным...</span></p><p><img src="images/7.png" referrerpolicy="no-referrer" alt="image-7"></p><div style="text-align:center">(рис 7. Крышечка танцует)</div><p>&nbsp;</p></div>
 </body>
 </html>
