@@ -2,20 +2,23 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>story</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
 #write.first-line-indent p { text-indent: 2em; }
 #write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
 #write.first-line-indent li { margin-left: 2em; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 .typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
@@ -64,7 +67,7 @@ div.hr:focus { cursor: none; }
 #write pre.ty-contain-cm { white-space: normal; }
 .CodeMirror-gutters { margin-right: 4px; }
 .md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
 #write .md-fences.mock-cm { white-space: pre-wrap; }
 .md-fences.md-fences-with-lineno { padding-left: 0px; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
@@ -76,6 +79,7 @@ div.hr:focus { cursor: none; }
 li div { padding-top: 0px; }
 blockquote { margin: 1rem 0px; }
 li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
 li { margin: 0px; position: relative; }
 blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child, li > :first-child { margin-top: 0px; }
@@ -85,10 +89,10 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
   #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
-  html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
   .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
@@ -99,6 +103,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
 .md-math-block { width: 100%; }
 .md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
 [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
 .md-task-list-item { position: relative; list-style-type: none; }
 .task-list-item.md-task-list-item { padding-left: 0px; }
@@ -134,11 +139,11 @@ code { text-align: left; vertical-align: initial; }
 a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
 .md-inline-math .MathJax_SVG .noError { display: none !important; }
 .html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
 .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
 .MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
 .MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
 .MathJax_SVG * { transition: none 0s ease 0s; }
 .MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
@@ -149,10 +154,61 @@ table tr th { border-bottom: 0px; }
 video { max-width: 100%; display: block; margin: 0px auto; }
 iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
-svg[id^="mermaidChart"] { line-height: 1em; }
 mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
 .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
 
 
 :root {
@@ -249,17 +305,33 @@ h6 code {
     font-size: inherit;
 }
 h1 {
-    padding-bottom: .3em;
     font-size: 2.25em;
     line-height: 1.2;
     border-bottom: 1px solid #eee;
 }
 h2 {
-   padding-bottom: .3em;
     font-size: 1.75em;
     line-height: 1.225;
     border-bottom: 1px solid #eee;
 }
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
 h3 {
     font-size: 1.5em;
     line-height: 1.43;
@@ -324,7 +396,7 @@ table {
     word-break: initial;
 }
 table tr {
-    border-top: 1px solid #dfe2e5;
+    border: 1px solid #dfe2e5;
     margin: 0;
     padding: 0;
 }
@@ -332,24 +404,24 @@ table tr:nth-child(2n),
 thead {
     background-color: #f8f8f8;
 }
-table tr th {
+table th {
     font-weight: bold;
     border: 1px solid #dfe2e5;
     border-bottom: 0;
     margin: 0;
     padding: 6px 13px;
 }
-table tr td {
+table td {
     border: 1px solid #dfe2e5;
     margin: 0;
     padding: 6px 13px;
 }
-table tr th:first-child,
-table tr td:first-child {
+table th:first-child,
+table td:first-child {
     margin-top: 0;
 }
-table tr th:last-child,
-table tr td:last-child {
+table th:last-child,
+table td:last-child {
     margin-bottom: 0;
 }
 
@@ -498,9 +570,9 @@ header, .context-menu, .megamenu-content, footer{
     color: #b4654d;
 }
 
-.html-for-mac .context-menu {
+/*.html-for-mac {
     --item-hover-bg-color: #E6F0FE;
-}
+}*/
 
 #md-notification .btn {
     border: 0;
@@ -508,6 +580,7 @@ header, .context-menu, .megamenu-content, footer{
 
 .dropdown-menu .divider {
     border-color: #e5e5e5;
+    opacity: 0.4;
 }
 
 .ty-preferences .window-content {
@@ -519,38 +592,47 @@ header, .context-menu, .megamenu-content, footer{
     background: #999;
 }
 
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
 
-</style>
+
+ :root {--mermaid-font-zoom:1.25em ;} 
+</style><title>story</title>
 </head>
-<body class='typora-export os-windows' >
-<div  id='write'  class = ''><div style="text-align:center">Пока не придумал</div><hr /><h3><a name="1" class="md-header-anchor"></a><span>1</span></h3><audio controls="" preload="none">
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div style="text-align:center">Пока не придумал</div><hr /><h3 id='1'><span>1</span></h3><audio controls="" preload="none">
   <source src="audio/mad_world.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
-</audio><p>&nbsp;</p><p><span>Заброшенный город. Ночь. Тяжелое дыхание ветра сдувает  остатки следов с улиц, еще недавно населённых вязкой смесью под названием общество. То общество было прежним, не видавшим новый строй, его преимущества, оно было старым, оно было другим... Побитый временем бордюр плакал осколками камня, падающими в начало темноты. Эти улицы и вправду были темны - всего пара фонарей на каждую, будто кто-то экономил на этом, или специально не давал их ставить. Тень начиналась чуть ли не прямо под фонарем, а тянулась бесконечно долго, бесконечно далеко. Лишь старые окна задумчиво смотрели вдаль, ожидая перемен.</span></p><p><img src="images/1.png" referrerpolicy="no-referrer" alt="image-1"></p><div style="text-align:center">(рис 1. Бордюр плачет)</div><hr /><h3><a name="2" class="md-header-anchor"></a><span>2</span></h3><audio controls="" preload="none">
+</audio><p>&nbsp;</p><p><span>Заброшенный город. Ночь. Тяжелое дыхание ветра сдувает  остатки следов с улиц, еще недавно населённых вязкой смесью под названием общество. То общество было прежним, не видавшим новый строй, его преимущества, оно было старым, оно было другим... Побитый временем бордюр плакал осколками камня, падающими в начало темноты. Эти улицы и вправду были темны - всего пара фонарей на каждую, будто кто-то экономил на этом, или специально не давал их ставить. Тень начиналась чуть ли не прямо под фонарем, а тянулась бесконечно долго, бесконечно далеко. Лишь старые окна задумчиво смотрели вдаль, ожидая перемен.</span></p><p><img src="images/1.png" referrerpolicy="no-referrer" alt="image-1"></p><div style="text-align:center">(рис 1. Бордюр плачет)</div><hr /><h3 id='2'><span>2</span></h3><audio controls="" preload="none">
   <source src="audio/riders_on_the_storm.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio><p><span>Послышались шаги. Медленные и нерасторопные, такие неуклюжие, как будто это не имеет значения. Это был Фонарь - высокий худой паренек с желтыми глазами, классической стрижкой и задумчивым лицом. Он шел маленькими шагами, засунув обе руки в карманы своего темного плаща, засматриваясь себе под ноги, на что-то совсем обычное и не требовавшее такого пристального внимания. Он шел и вдумчиво напевал:</span></p><blockquote><p><span>Into this house we&#39;re born</span>
 <span>Into this world we&#39;re thrown</span>
 <span>Like a dog without a bone</span>
-<span>An actor out on loan..</span></p></blockquote><p><img src="images/2.png" referrerpolicy="no-referrer" alt="image-2"></p><div style="text-align:center">(рис 2. Фонарь гуляет)</div><hr /><h3><a name="3" class="md-header-anchor"></a><span>3</span></h3><audio controls="" preload="none">
+<span>An actor out on loan..</span></p></blockquote><p><img src="images/2.png" referrerpolicy="no-referrer" alt="image-2"></p><div style="text-align:center">(рис 2. Фонарь гуляет)</div><hr /><h3 id='3'><span>3</span></h3><audio controls="" preload="none">
   <source src="audio/pacific.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
-</audio><p><span>На расстоянии всего в 2 дня пути от старого города во всю уже кипела новая жизнь. Все небо было ярким, сияющим в тысячах маленьких огней. Народ толпился у эскалаторов, уставших работать без передышки, ведущих их крохотные сердца в новый, ранее невиданный, мир. &quot;Теперь то заживем!&quot; - доносились крики. &quot;Идея - свет! Пойдешь на свет - свет найдешь!&quot; - ведал кто-то из маленькой кучки свояков, стоящих на стене в шестом углу. Все радовались живым вестям из &quot;вещалки&quot;. Ведь сегодня вещали принятие нового решения - правила &quot;Помоги ближнему&quot;. Да, правило скромное, но народу понравилось. Вот так, весело и оживленно, с тысячами улыбок на лицах, проходило начало уже четвертого праздника общества!</span></p><p><img src="images/3.png" referrerpolicy="no-referrer" alt="image-3"></p><div style="text-align:center">(рис 3. уставшие эскалаторы)</div><hr /><h3><a name="4" class="md-header-anchor"></a><span>4</span></h3><audio controls="" preload="none">
+</audio><p><span>На расстоянии всего в 2 дня пути от старого города во всю уже кипела новая жизнь. Все небо было ярким, сияющим в тысячах маленьких огней. Народ толпился у эскалаторов, уставших работать без передышки, ведущих их крохотные сердца в новый, ранее невиданный, мир. &quot;Теперь то заживем!&quot; - доносились крики. &quot;Идея - свет! Пойдешь на свет - свет найдешь!&quot; - ведал кто-то из маленькой кучки свояков, стоящих на стене в шестом углу. Все радовались живым вестям из &quot;вещалки&quot;. Ведь сегодня вещали принятие нового решения - правила &quot;Помоги ближнему&quot;. Да, правило скромное, но народу понравилось. Вот так, весело и оживленно, с тысячами улыбок на лицах, проходило начало уже четвертого праздника общества!</span></p><p><img src="images/3.png" referrerpolicy="no-referrer" alt="image-3"></p><div style="text-align:center">(рис 3. уставшие эскалаторы)</div><hr /><h3 id='4'><span>4</span></h3><audio controls="" preload="none">
   <source src="audio/come_together.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
-</audio><p><span>Гул, грохот, ранее весеннее утро, все смешалось воедино. Рассекая теплый воздух, взмахивая элегантными краешками, в направлении старого города летит стая струн - лучший транспорт последнего шага науки. Появилось сие средство передвижения совсем неслучайно, в следствии внебрачных половых связей электрического голубя с куском железа. Подумать только, кто-то же их захотел скрестить?... Сейчас струны автоматизированы и готовы доставить что угодно, и куда угодно. На сей раз, этим чем угодным были: братья стекла, три подруги бордюры, 40 сантиметровый шланг, старый фонарь, печь-мулатка и обманчивый уличный указатель. Именно они, по мнению нового строя, оказались тем самым ближним, нуждающимся в помощи.</span></p><p><span>Парнишка Фонарь стоял, покосившись чуть вперед, уткнувшись взглядом вниз, впрочем это его нормальное состояние. На этот раз он смотрел на свой левый черный ботинок. &quot;Моржовый сапог&quot; - прошептал он сам себе. И тут как тут, нечто схватило его за эту же ногу, потом за вторую, за руку, туловище... Это были струны. Один миг и Фонарь теперь в воздухе, летит на встречу новому миру. Летит с криком &quot;У меня свои ноги под коленями!&quot;. Да, Фонаря то никто не спросил, это было не очень дружелюбно. </span></p><p><img src="images/4.png" referrerpolicy="no-referrer" alt="image-4"></p><div style="text-align:center">(рис 4. улетучивание Фонаря)</div><h3><a name="5" class="md-header-anchor"></a><span>5</span></h3><audio controls="" preload="none">
+</audio><p><span>Гул, грохот, ранее весеннее утро, все смешалось воедино. Рассекая теплый воздух, взмахивая элегантными краешками, в направлении старого города летит стая струн - лучший транспорт последнего шага науки. Появилось сие средство передвижения совсем неслучайно, в следствии внебрачных половых связей электрического голубя с куском железа. Подумать только, кто-то же их захотел скрестить?... Сейчас струны автоматизированы и готовы доставить что угодно, и куда угодно. На сей раз, этим чем угодным были: братья стекла, три подруги бордюры, 40 сантиметровый шланг, старый фонарь, печь-мулатка и обманчивый уличный указатель. Именно они, по мнению нового строя, оказались тем самым ближним, нуждающимся в помощи.</span></p><p><span>Парнишка Фонарь стоял, покосившись чуть вперед, уткнувшись взглядом вниз, впрочем это его нормальное состояние. На этот раз он смотрел на свой левый черный ботинок. &quot;Моржовый сапог&quot; - прошептал он сам себе. И тут как тут, нечто схватило его за эту же ногу, потом за вторую, за руку, туловище... Это были струны. Один миг и Фонарь теперь в воздухе, летит на встречу новому миру. Летит с криком &quot;У меня свои ноги под коленями!&quot;. Да, Фонаря то никто не спросил, это было не очень дружелюбно. </span></p><p><img src="images/4.png" referrerpolicy="no-referrer" alt="image-4"></p><div style="text-align:center">(рис 4. улетучивание Фонаря)</div><h3 id='5'><span>5</span></h3><audio controls="" preload="none">
   <source src="audio/it_dont_mean_a_thing.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
 </audio><p><span>-</span><span> Ммм, Крышечка, а это что за блюдо? - с удивлением спросил Фонарь.</span></p><p><span>-</span><span> Тушенные иголки в собственном соку. Ты что никогда иголок не ел?</span></p><p><span>-</span><span> Та нет, как-то не приходилось.</span></p><p><span>-</span><span> Хей, ты чего такой кислый? Попробуй, они правда вкусные. Это лучшее что здесь есть, я сама выбирала!</span></p><p><span>Сказала тоненьким голосом Крышечка, уставившись маленькими зелеными глазами на своего собеседника. Темные тонкие брови приподнялись чуть-чуть вверх от удивления.</span></p><p><span>-</span><span> Хм, вкусно...</span></p><p><span>-</span><span> Ну я же говорила!</span></p><p><span>-</span><span> Микроволн не хватает, люблю вкус понасыщеннее. М, я хотел сказать спасибо..</span></p><p><span>-</span><span> Такой смешной. Если вдруг нужна будет помощь.. </span><span>*</span><span>игра бровями</span><span>*</span><span> .. я всегда рада помочь - чуть улыбаясь сказала Крышечка. </span>
-<span>И давно ты тут?</span></p><p><span>-</span><span> Недели полторы. Я просто прогуливался утром и вдруг меня схватили струны и понесли сюда. Эх, я тогда так испугался. Хоть бы спросили!</span></p><p><span>-</span><span> Не понимаю тебя, по-моему это нормально, не? Хотя.. Такая себе тема для разговора. Можем остаться тут... А можем... пройтись - подморгнула крышечка.</span></p><p><img src="images/5.png" referrerpolicy="no-referrer" alt="image-5"></p><div style="text-align:center">(рис 5. ужин)</div><h3><a name="6" class="md-header-anchor"></a><span>6</span></h3><audio controls="" preload="none">
+<span>И давно ты тут?</span></p><p><span>-</span><span> Недели полторы. Я просто прогуливался утром и вдруг меня схватили струны и понесли сюда. Эх, я тогда так испугался. Хоть бы спросили!</span></p><p><span>-</span><span> Не понимаю тебя, по-моему это нормально, не? Хотя.. Такая себе тема для разговора. Можем остаться тут... А можем... пройтись - подморгнула крышечка.</span></p><p><img src="images/5.png" referrerpolicy="no-referrer" alt="image-5"></p><div style="text-align:center">(рис 5. ужин)</div><h3 id='6'><span>6</span></h3><audio controls="" preload="none">
   <source src="audio/dumb.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
-</audio><p><span>Дождался. Время 28 часов вечера - вся нормальная техника уже идет на боковую, а я, снова прочитав свой серийный номер, собираюсь на улицу. И чего она меня только позвала? Хотя, гулять это мое призвание.. Интересно что она обо мне вообще думает? Ха-ха, Крышечка от флэшки и Фонарь, xD. Высокий, зато светло?</span></p><p><span>Пора выходить. Небо классное. Кажется, оно в этом крае специально светит ярче? Дежавю... Хотя странно, это же сколько электроэнергии нужно что бы включить каждую лампочку на небе?! Это неэффективно, это несерьезно! И вообще интересное место, да и Крышечка тоже, ей норм, а мне тут не нравится. В старом городе было лучше...</span></p><p><span>Фонарь внимательно посмотрел на свое лицо в зеркало, так будто это его привычка, будто он не мог этого не сделать, улыбнулся, и вышел на запланированную встречу.</span></p><p><img src="images/6.png" referrerpolicy="no-referrer" alt="image-6"></p><div style="text-align:center">(рис 6. зеркало)</div><h3><a name="7" class="md-header-anchor"></a><span>7</span></h3><audio controls="" preload="none">
+</audio><p><span>Дождался. Время 28 часов вечера - вся нормальная техника уже идет на боковую, а я, снова прочитав свой серийный номер, собираюсь на улицу. И чего она меня только позвала? Хотя, гулять это мое призвание.. Интересно что она обо мне вообще думает? Ха-ха, Крышечка от флэшки и Фонарь, xD. Высокий, зато светло?</span></p><p><span>Пора выходить. Небо классное. Кажется, оно в этом крае специально светит ярче? Дежавю... Хотя странно, это же сколько электроэнергии нужно что бы включить каждую лампочку на небе?! Это неэффективно, это несерьезно! И вообще интересное место, да и Крышечка тоже, ей норм, а мне тут не нравится. В старом городе было лучше...</span></p><p><span>Фонарь внимательно посмотрел на свое лицо в зеркало, так будто это его привычка, будто он не мог этого не сделать, улыбнулся, и вышел на запланированную встречу.</span></p><p><img src="images/6.png" referrerpolicy="no-referrer" alt="image-6"></p><div style="text-align:center">(рис 6. зеркало)</div><h3 id='7'><span>7</span></h3><audio controls="" preload="none">
   <source src="audio/caravan_palace_lone_digger.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
-</audio><p><span>Два часа ночи. Деревья, лавочки, и снова лавочки, и снова деревья... У кого-то рядом играет музыка.</span></p><p><span>-</span><span> Выпьем? Спросила крышечка и стеснительно подморгнула.</span></p><p><span>-</span><span> С тебя тост - сказал Фонарь, ищя взглядом остатки &quot;девятого вольта&quot;.</span></p><p><span>-</span><span> Кхм, ну это... эээм... За инкапсуляцию!</span></p><p><span>-</span><span> За инкапсуляцию!</span></p><p><span>И вот, в один миг, крепнет ум, яснеет мысль, твердеют намерения. Бесконечно можно смотреть на три вещи: на крышечку, снова на крышечку, и опять на крышечку. Как вдруг она кричит, пронзая задумчивое состояние.</span></p><p><span>-</span><span> Эй, братан, о чем думаешь? Смотри как могу!</span></p><p><span>Что? А мне нужно отвечать? - спросил себя Фонарь. И пока он думал что ответить, крышечка вдруг затанцевала. Это было нечто необычное, она двигалась, как заколдованная, словно земное притяжение на нее не действует. Ее красивые ножки будто скользили по земле, совсем не зависимо от тела. </span></p><p><span>-</span><span> Классно танцуешь!</span></p><p><span>-</span><span> Спасибо - с улыбкой на лице сказала Крышечка.</span></p><p><span>Крышечка продолжала кружится в свете, покачивающего головой, Фонаря.</span></p><p><span>-</span><span> А ты чего не танцуешь?</span></p><p><span>-</span><span> Не мое это. Не умею.</span></p><p><span>-</span><span> Давай научу? - с большим энтузиазмом спросила Крышечка.</span></p><p><span>-</span><span> Давай как-то в другой раз. А вообще, за предложение спасибо - учтиво ответил Фонарь, сдерживая свой маленький страх всего нового, и сел на лавочку. </span></p><p><span>Крышечка запрыгнула на лавочку. Взяла в руки свою банку девяти вольт и уставилась на небо, встав во весь рост, там, где обычно сидят. Небо - море маленьких огней, всегда радовало душу Крышечки как впервые. Фонарь сидел неподвижно уставившись на свои ноги. Заметив поворот Крышечки в его сторону, в голове пронеслось &quot;Ты что-то говорила?&quot;, и Фонарь чуть наклонился в её сторону. Как вдруг, &quot;Что? Поцелуй?? Ты хотела что-то спросить или так надо? Она правда меня поцеловала?&quot;, - поток мыслей было не остановить, чувства лили через край, а деление на ноль в этот момент официально стало возможным...</span></p><p><img src="images/7.png" referrerpolicy="no-referrer" alt="image-7"></p><div style="text-align:center">(рис 7. Крышечка танцует)</div><h3><a name="8" class="md-header-anchor"></a><span>8</span></h3><audio controls="" preload="none">
+</audio><p><span>Два часа ночи. Деревья, лавочки, и снова лавочки, и снова деревья... У кого-то рядом играет музыка.</span></p><p><span>-</span><span> Выпьем? Спросила крышечка и стеснительно подморгнула.</span></p><p><span>-</span><span> С тебя тост - сказал Фонарь, ищя взглядом остатки &quot;девятого вольта&quot;.</span></p><p><span>-</span><span> Кхм, ну это... эээм... За инкапсуляцию!</span></p><p><span>-</span><span> За инкапсуляцию!</span></p><p><span>И вот, в один миг, крепнет ум, яснеет мысль, твердеют намерения. Бесконечно можно смотреть на три вещи: на крышечку, снова на крышечку, и опять на крышечку. Как вдруг она кричит, пронзая задумчивое состояние.</span></p><p><span>-</span><span> Эй, братан, о чем думаешь? Смотри как могу!</span></p><p><span>Что? А мне нужно отвечать? - спросил себя Фонарь. И пока он думал что ответить, крышечка вдруг затанцевала. Это было нечто необычное, она двигалась, как заколдованная, словно земное притяжение на нее не действует. Ее красивые ножки будто скользили по земле, совсем не зависимо от тела. </span></p><p><span>-</span><span> Классно танцуешь!</span></p><p><span>-</span><span> Спасибо - с улыбкой на лице сказала Крышечка.</span></p><p><span>Крышечка продолжала кружится в свете, покачивающего головой, Фонаря.</span></p><p><span>-</span><span> А ты чего не танцуешь?</span></p><p><span>-</span><span> Не мое это. Не умею.</span></p><p><span>-</span><span> Давай научу? - с большим энтузиазмом спросила Крышечка.</span></p><p><span>-</span><span> Давай как-то в другой раз. А вообще, за предложение спасибо - учтиво ответил Фонарь, сдерживая свой маленький страх всего нового, и сел на лавочку. </span></p><p><span>Крышечка запрыгнула на лавочку. Взяла в руки свою банку девяти вольт и уставилась на небо, встав во весь рост, там, где обычно сидят. Небо - море маленьких огней, всегда радовало душу Крышечки как впервые. Фонарь сидел неподвижно уставившись на свои ноги. Заметив поворот Крышечки в его сторону, в голове пронеслось &quot;Ты что-то говорила?&quot;, и Фонарь чуть наклонился в её сторону. Как вдруг, &quot;Что? Поцелуй?? Ты хотела что-то спросить или так надо? Она правда меня поцеловала?&quot;, - поток мыслей было не остановить, чувства лили через край, а деление на ноль в этот момент официально стало возможным...</span></p><p><img src="images/7.png" referrerpolicy="no-referrer" alt="image-7"></p><div style="text-align:center">(рис 7. Крышечка танцует)</div><h3 id='8'><span>8</span></h3><audio controls="" preload="none">
   <source src="audio/bringin_home_the_rain.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
-</audio><p><span>Будь послушен, помолчи! Притворись тупым! Будь послушен, помолчи! Притворись тупым! Будь послушен, помолчи! Притворись тупым... снова, снова и снова. Слышу это тут. Слышу это еще раз. Понятное дело что Карп такого никогда не скажет, на то он и старый кирпич, но я постоянно слышу &quot;побудь тупым&quot;.</span></p><p><span>Теперь нас трое. Костлявый лысый возле меня - это Ло-Пата, дурной сорвиголова, хоть и последнюю голову ему поменяли на совсем новую, я бы не считал это плюсом. Да и ручка у него некрасивая.</span></p><p><span>Рядом постоянный пессимист В.. М.. блин, я не помню как его зовут, парень что дал своим причендалам странные имена и постоянно мутит воду. Вообще он какой-то странный, постоянно приносит с собой фреш из жидкой пластмассы и говорит &quot;Ло-Пата, на попей&quot;. Наверное у него вся семья такая с правильным питанием.</span></p><p><span>Нам теперь предстоит решать кого отправить на переработку - ненужных туда, ценных сюда. Но какое моральное право я имею это решать, какое право имеем мы вместе? Какое право имели те, которые меня сюда назначили? Аааа, эти мысли просто жуть, не даром же я шел к такому большому рейтингу. Не хочу! Не хочу помнить то что было раньше! Чего я добьюсь сегодня? Я принесу домой дождь?</span></p><p><span>Будь послушен, помолчи! - снова заговорил Карп. Те, кого мы отправляем на переработку, мы больше не можем им помочь, долг этих безнадежных - уйти, дав возможность появлению новых членов общества. Правила простые: тот, кого используют, тот нужен, а тот, кого не используют, тот не нужен. Сколько раз будешь нужен столько и окажись поле... </span></p><p><span>Отсохнуться бы и забыться. Я всегда приношу домой дождь! Я всегда приношу домой дождь...</span></p><p><img src="images/8.png" referrerpolicy="no-referrer" alt="image-8"></p><div style="text-align:center">(рис 8. Липкий)</div></div>
+</audio><p><span>Будь послушен, помолчи! Притворись тупым! Будь послушен, помолчи! Притворись тупым! Будь послушен, помолчи! Притворись тупым... снова, снова и снова. Слышу это тут. Слышу это еще раз. Понятное дело что Карп такого никогда не скажет, на то он и старый кирпич, но я постоянно слышу &quot;побудь тупым&quot;.</span></p><p><span>Теперь нас трое. Костлявый лысый возле меня - это Ло-Пата, дурной сорвиголова, хоть и последнюю голову ему поменяли на совсем новую, я бы не считал это плюсом. Да и ручка у него некрасивая.</span></p><p><span>Рядом постоянный пессимист В.. М.. блин, я не помню как его зовут, парень что дал своим причендалам странные имена и постоянно мутит воду. Вообще он какой-то странный, постоянно приносит с собой фреш из жидкой пластмассы и говорит &quot;Ло-Пата, на попей&quot;. Наверное у него вся семья такая с правильным питанием.</span></p><p><span>Нам теперь предстоит решать кого отправить на переработку - ненужных туда, ценных сюда. Но какое моральное право я имею это решать, какое право имеем мы вместе? Какое право имели те, которые меня сюда назначили? Аааа, эти мысли просто жуть, не даром же я шел к такому большому рейтингу. Не хочу! Не хочу помнить то что было раньше! Чего я добьюсь сегодня? Я принесу домой дождь?</span></p><p><span>Будь послушен, помолчи! - снова заговорил Карп. Те, кого мы отправляем на переработку, мы больше не можем им помочь, долг этих безнадежных - уйти, дав возможность появлению новых членов общества. Правила простые: тот, кого используют, тот нужен, а тот, кого не используют, тот не нужен. Сколько раз будешь нужен столько и окажись поле... </span></p><p><span>Отсохнуться бы и забыться. Я всегда приношу домой дождь! Я всегда приношу домой дождь...</span></p><p><img src="images/8.png" referrerpolicy="no-referrer" alt="image-8"></p><div style="text-align:center">(рис 8. Липкий)</div><h3 id='9'><span>9</span></h3><audio controls="" preload="none">
+  <source src="audio/placebo_where_is_my_mind.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio><p><span>-</span><span> кушать хочешь?</span></p><p><span>-</span><span> ?</span></p><p><span>-</span><span> кушать?</span></p><p><span>-</span><span> да</span></p><p><img src="images/9.png" referrerpolicy="no-referrer" alt="image-9"></p><div style="text-align:center">(рис 9. Салат из жидкой пластмассы с термопастой)</div></div></div>
 </body>
 </html>
