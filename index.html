@@ -6,7 +6,7 @@
 <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
 .mac-os-11 { --title-bar-height:28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
@@ -22,8 +22,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +49,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +71,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
@@ -87,7 +86,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,22 +129,14 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
 kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
 code { text-align: left; vertical-align: initial; }
 a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none 0s ease 0s; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
 [lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
@@ -164,9 +155,7 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .md-diagram-panel .messageText { stroke: none !important; }
 .md-diagram-panel .start-state { fill: var(--node-fill); }
 .md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
 .md-fences.md-fences-math { font-size: 1em; }
-.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
 .md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
 .md-fences-advanced:not(.md-focus) { background: inherit; }
 .typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
@@ -209,6 +198,7 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
 .typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
 .typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
 
 
 :root {
@@ -224,10 +214,11 @@ mark .md-meta { color: rgb(0, 0, 0); }
     /* open-sans-700italic - latin-ext_latin */
   html {
     font-size: 16px;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
     color: rgb(51, 51, 51);
     line-height: 1.6;
 }
@@ -466,11 +457,8 @@ code {
     html {
         font-size: 13px;
     }
-    table,
     pre {
         page-break-inside: avoid;
-    }
-    pre {
         word-wrap: break-word;
     }
 }
@@ -598,7 +586,7 @@ header, .context-menu, .megamenu-content, footer{
 }
 
 
- :root {--mermaid-font-zoom:1.25em ;} 
+
 </style><title>story</title>
 </head>
 <body class='typora-export os-windows'><div class='typora-export-content'>
@@ -633,6 +621,9 @@ header, .context-menu, .megamenu-content, footer{
 </audio><p><span>Будь послушен, помолчи! Притворись тупым! Будь послушен, помолчи! Притворись тупым! Будь послушен, помолчи! Притворись тупым... снова, снова и снова. Слышу это тут. Слышу это еще раз. Понятное дело что Карп такого никогда не скажет, на то он и старый кирпич, но я постоянно слышу &quot;побудь тупым&quot;.</span></p><p><span>Теперь нас трое. Костлявый лысый возле меня - это Ло-Пата, дурной сорвиголова, хоть и последнюю голову ему поменяли на совсем новую, я бы не считал это плюсом. Да и ручка у него некрасивая.</span></p><p><span>Рядом постоянный пессимист В.. М.. блин, я не помню как его зовут, парень что дал своим причендалам странные имена и постоянно мутит воду. Вообще он какой-то странный, постоянно приносит с собой фреш из жидкой пластмассы и говорит &quot;Ло-Пата, на попей&quot;. Наверное у него вся семья такая с правильным питанием.</span></p><p><span>Нам теперь предстоит решать кого отправить на переработку - ненужных туда, ценных сюда. Но какое моральное право я имею это решать, какое право имеем мы вместе? Какое право имели те, которые меня сюда назначили? Аааа, эти мысли просто жуть, не даром же я шел к такому большому рейтингу. Не хочу! Не хочу помнить то что было раньше! Чего я добьюсь сегодня? Я принесу домой дождь?</span></p><p><span>Будь послушен, помолчи! - снова заговорил Карп. Те, кого мы отправляем на переработку, мы больше не можем им помочь, долг этих безнадежных - уйти, дав возможность появлению новых членов общества. Правила простые: тот, кого используют, тот нужен, а тот, кого не используют, тот не нужен. Сколько раз будешь нужен столько и окажись поле... </span></p><p><span>Отсохнуться бы и забыться. Я всегда приношу домой дождь! Я всегда приношу домой дождь...</span></p><p><img src="images/8.png" referrerpolicy="no-referrer" alt="image-8"></p><div style="text-align:center">(рис 8. Липкий)</div><h3 id='9'><span>9</span></h3><audio controls="" preload="none">
   <source src="audio/placebo_where_is_my_mind.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
-</audio><p><span>-</span><span> кушать хочешь?</span></p><p><span>-</span><span> ?</span></p><p><span>-</span><span> кушать?</span></p><p><span>-</span><span> да</span></p><p><img src="images/9.png" referrerpolicy="no-referrer" alt="image-9"></p><div style="text-align:center">(рис 9. Салат из жидкой пластмассы с термопастой)</div></div></div>
+</audio><p><span>-</span><span> кушать хочешь?</span></p><p><span>-</span><span> ?</span></p><p><span>-</span><span> кушать?</span></p><p><span>-</span><span> да</span></p><p><img src="images/9.png" referrerpolicy="no-referrer" alt="image-9"></p><div style="text-align:center">(рис 9. Салат из жидкой пластмассы с термопастой)</div><h3 id='10'><span>10</span></h3><audio controls="" preload="none">
+  <source src="audio/chelou_dont_hate_on_me.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio><p><span>Знать бы, а не знаешь. Решение нужно принимать тут и сейчас, а узнаешь только в будущем. Люди... и времена... меняются очень быстро, иногда по нескольку раз в день.</span></p><p><span>Но ты ведь жаждешь сильных чувств? - я дам их тебе, просто позволь мне сделать мое дело. Безвозмездно угодить либо бескорыстно сделать приятное. Не бойся.</span></p><p><span>Но почему я этого хочу? Неужели я пытаюсь соответствовать твоему описанию мира? Это точно я? Как мне может нравиться то, что приносит боль? Я ее принимаю? Мой стакан наполнен не на половину, мой стакан наполнен дважды. Тот миг... это того стоило? Это повторится?</span></p><p><span>Не ненавидь меня. Не бойся. Я просто поменяю фильтр, пропущу мой стакан еще раз. К черту дорогой кофе и украшения, я люблю рыбу. Ох... Словил, убил, пожарил - это любовь? Нет, я не люблю рыбу, я люблю ее вкус. Я люблю твой вкус. Просто позволь мне сделать свое дело. Не бойся, не сопротивляйся, я дам тебе то что ты хочешь.</span></p><p><span>Мое сердце голодное. По-настоящему голодное, а я боюсь есть. Время открыться. Время мириться с миром. Я звоню себе, а никто не берет трубку. Не ненавидь меня, а то я возненавижу тебя в ответ. Перезвони!</span></p><p>&nbsp;</p><p><img src="images/10.png" referrerpolicy="no-referrer" alt="image-10"></p><div style="text-align:center">(рис 10. Голод)</div><p>&nbsp;</p></div></div>
 </body>
 </html>
